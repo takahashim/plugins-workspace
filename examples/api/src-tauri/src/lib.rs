@@ -52,11 +52,11 @@ pub fn run() {
                 app.handle()
                     .plugin(tauri_plugin_updater::Builder::new().build())?;
             }
+            app.handle().plugin(tauri_plugin_biometric::init())?;
             #[cfg(mobile)]
             {
                 app.handle().plugin(tauri_plugin_barcode_scanner::init())?;
                 app.handle().plugin(tauri_plugin_nfc::init())?;
-                app.handle().plugin(tauri_plugin_biometric::init())?;
                 app.handle().plugin(tauri_plugin_geolocation::init())?;
                 app.handle().plugin(tauri_plugin_haptics::init())?;
             }
